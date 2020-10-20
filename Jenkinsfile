@@ -8,7 +8,7 @@ pipeline {
               }
          }
         
-         stage('upload image to Dockerhub') {
+        /* stage('upload image to Dockerhub') {
               steps { 
                   script {
                   withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
@@ -16,32 +16,32 @@ pipeline {
                   }
                   }
               }
-         } 
+         }*/ 
               
-         /* stage('Upload to AWS') {
+          stage('Upload to AWS') {
              when {
                 branch 'master'
             }
               steps {
                   withAWS(region:'us-west-2',credentials:'aws-static') {
                   sh 'echo "Uploading content with AWS creds"'
-                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'module2lesson5s3')
+                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'index.html', bucket:'udacitysijo2020')
                   }
               }
-         }*/
+         }
          stage('Deploy to AWS Kubernetes Cluster') {
              when {
                 branch 'master'
             }
               steps {
                   withAWS(region:'us-east-2',credentials:'aws-static') {
-                  sh "aws eks --region us-east-2 update-kubeconfig --name capstonecluster"
-                  sh "kubectl set image deployments/projectcapstoneindex projectcapstoneindex=vikrantarora14/projectcapstoneindex:latest"
+                  sh "aws eks --region us-east-2 update-kubeconfig --name capstoneproj123"
+                  sh "kubectl set image deployments/capstoneproj123 projectcapstoneindex=sijodevops/udacityproj/capstoneprojindex:latest"
                   sh "kubectl apply -f deployment.yml"
                   sh "kubectl get nodes"
                   sh "kubectl get deployment"
                   sh "kubectl get pod -o wide"
-                  sh "kubectl apply -f service.yml"
+                  sh "kubectl apply -f indexserviceservice.yml"
                   sh "kubectl get services"
                     
                   }
