@@ -15,14 +15,14 @@ pipeline {
                   sh 'tidy -q -e *.html'
               }
          }
-         stage('Build Docker Image') {
+        /* stage('Build Docker Image') {
              when {
                 branch 'master'
             }
               steps { 
                   sh "./run_docker.sh"
               }
-         } 
+         } */
          stage('upload image to Dockerhub') {
               steps { 
                   script {
@@ -31,8 +31,8 @@ pipeline {
                   }
                   }
               }
-         }
-        /* stage('Security Scan') {
+         } 
+         stage('Security Scan') {
              when {
                 branch 'staging'
             }
