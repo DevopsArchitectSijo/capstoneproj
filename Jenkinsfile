@@ -8,17 +8,8 @@ pipeline {
               }
          }
         
-        /* stage('upload image to Dockerhub') {
-              steps { 
-                  script {
-                  withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
-                  sh "./upload_docker.sh"
-                  }
-                  }
-              }
-         }*/ 
-              
-          stage('Upload to AWS') {
+                     
+          stage('Upload to AWS S3') {
              when {
                 branch 'master'
             }
@@ -41,7 +32,7 @@ pipeline {
                   sh "kubectl get nodes"
                   sh "kubectl get deployment"
                   sh "kubectl get pod -o wide"
-                  sh "kubectl apply -f indexserviceservice.yml"
+                  sh "kubectl apply -f indexservices.yml"
                   sh "kubectl get services"
                     
                   }
