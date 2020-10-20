@@ -6,12 +6,12 @@
 # Step 1:
 # Create dockerpath
 # dockerpath=<your docker ID/path>
-export dockerpath=sijodevops/udacityprojects
+dockerpath=sijodevops/udacityprojects
 # Step 2:  
 # Authenticate & tag
 echo "Docker ID and Image: $dockerpath"
 docker login --username sijodevops
-docker tag projectcapstone $dockerpath
+docker tag projectcapstone123 $dockerpath
 # Step 3:
 # Push image to a docker repository
 docker push $dockerpath
