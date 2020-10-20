@@ -17,7 +17,7 @@ pipeline {
               }
          }
           
-         stage('upload image to Dockerhub') {
+         /*stage('upload image to Dockerhub') {
               steps { 
                   script {
                   withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
@@ -55,6 +55,6 @@ pipeline {
                     
                   }
               }
-         }
+         }*/
      }
 }
