@@ -5,15 +5,15 @@
 # Step 1:
 # This is your Docker ID/path
 # dockerpath=<>
-dockerpath="vikrantarora14/testcapstone"
+dockerpath="sijodevops/capstoneproj"
 
 # Step 2
 # Run the Docker Hub container with kubernetes
-kubectl run capstoneindex\
+kubectl run capstonepropj123\
     --generator=run-pod/v1\
     --image=$dockerpath
     --expose
-    --port=9000 --labels app=capstoneindex
+    --port=9000 --labels app=capstoneproj123
 
 # Step 3:
 # List kubernetes pods
