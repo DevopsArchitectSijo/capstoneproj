@@ -1,19 +1,13 @@
 pipeline {
      agent any
      stages {
-           stage('Lint HTML') {
+         
+         stage('Lint HTML') {
               steps {
                   sh 'tidy -q -e *.html'
               }
          }
-        /* stage('Build Docker Image') {
-             when {
-                branch 'master'
-            }
-              steps { 
-                  sh "./run_docker.sh"
-              }
-         } */
+        
          stage('upload image to Dockerhub') {
               steps { 
                   script {
@@ -23,15 +17,15 @@ pipeline {
                   }
               }
          } 
-         stage('Security Scan') {
+        /* stage('Security Scan') {
              when {
                 branch 'staging'
             }
               steps { 
                   aquaMicroscanner imageName: 'alpine:latest', notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
               }
-         }   */      
-        /* stage('Upload to AWS') {
+         }         
+         stage('Upload to AWS') {
              when {
                 branch 'master'
             }
