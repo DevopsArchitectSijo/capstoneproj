@@ -7,7 +7,25 @@ pipeline {
                   sh 'tidy -q -e *.html'
               }
          }
-        
+          
+         stage('Build Docker Image') {
+             when {
+                branch 'master'
+            }
+              steps { 
+                  sh "./run_docker.sh"
+              }
+         }
+          
+         stage('upload image to Dockerhub') {
+              steps { 
+                  script {
+                  withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
+                  sh "./upload_docker.sh"
+                  }
+                  }
+              }
+         }
                      
           stage('Upload to AWS S3') {
              when {
@@ -27,7 +45,7 @@ pipeline {
               steps {
                   withAWS(region:'us-east-2',credentials:'aws-static') {
                   sh "aws eks --region us-east-2 update-kubeconfig --name capstoneproj123"
-                  sh "kubectl set image deployments/capstoneproj123 projectcapstoneindex=sijodevops/udacityproj/capstoneprojindex:latest"
+                  sh "kubectl set image deployments/capstoneproj123 projectcapstone=sijodevops/udacityproj/capstoneprojindex:latest"
                   sh "kubectl apply -f deployment.yml"
                   sh "kubectl get nodes"
                   sh "kubectl get deployment"
