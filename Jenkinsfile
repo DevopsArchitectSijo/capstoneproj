@@ -13,7 +13,7 @@ pipeline {
                 branch 'master'
             }
               steps { 
-                  sh "sudo ./run_docker.sh"
+                  sh "./run_docker.sh"
               }
          }
        
