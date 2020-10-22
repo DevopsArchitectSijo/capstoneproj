@@ -31,7 +31,8 @@ pipeline {
               steps { 
                   script {
                   withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
-                  sh "./upload_docker.sh"
+                  sh "docker tag projectcapstone sijodevops/capstoneproj"
+                  sh 'docker push sijodevops/capstoneproj'
                   }
                   }
               }
