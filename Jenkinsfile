@@ -45,6 +45,7 @@ pipeline {
               steps {
                   withAWS(region:'us-west-2',credentials:'jenkins') {
                   sh "aws eks --region us-west-2 update-kubeconfig --name capstoneproject123"
+                  sh "kubectl config use-context arn:aws:eks:us-west-2:656193710385:cluster/capstoneproject123"
                   sh "kubectl set image projectcapstone projectcapstone=sijodevops/capstoneproj:latest"
                   sh "kubectl apply -f deployment.yml"
                   sh "kubectl get nodes"
