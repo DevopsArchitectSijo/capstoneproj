@@ -24,7 +24,7 @@ pipeline {
                 branch 'master'
             }
               steps { 
-                  sh "./run_docker.sh"
+                  sh 'docker build --tag=projectscapstone'
               }
          }
        
