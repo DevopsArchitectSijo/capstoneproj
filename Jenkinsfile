@@ -37,6 +37,25 @@ pipeline {
                   }
               }
          }
+          
+          stage('Deploy to AWS Kubernetes Cluster') {
+             when {
+                branch 'master'
+            }
+              steps {
+                  withAWS(region:'us-east-2',credentials:'jenkins') {
+                  sh "aws eks --region us-east-2 update-kubeconfig --name capstoneproject123"
+                  sh "kubectl set image deployments/capstoneproj123 projectcapstone=sijodevops/capstoneproj/projectcapstone:latest"
+                  sh "kubectl apply -f deployment.yml"
+                  sh "kubectl get nodes"
+                  sh "kubectl get deployment"
+                  sh "kubectl get pod -o wide"
+                  sh "kubectl apply -f indexservices.yml"
+                  sh "kubectl get services"
+                    
+                  }
+              }
+         }
         
      }
 }
