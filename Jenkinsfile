@@ -43,8 +43,8 @@ pipeline {
                 branch 'master'
             }
               steps {
-                  withAWS(region:'us-east-2',credentials:'jenkins') {
-                  sh "aws eks --region us-east-2 update-kubeconfig --name capstoneproject123"
+                  withAWS(region:'us-west-2',credentials:'jenkins') {
+                  sh "aws eks --region us-west-2 update-kubeconfig --name capstoneproject123"
                   sh "kubectl set image deployments/capstoneproj123 projectcapstone=sijodevops/capstoneproj/projectcapstone:latest"
                   sh "kubectl apply -f Myinfradeployment.yml"
                   sh "kubectl get nodes"
