@@ -46,7 +46,7 @@ pipeline {
                   withAWS(region:'us-west-2',credentials:'jenkins') {
                   sh "aws eks --region us-west-2 update-kubeconfig --name capstoneproject123"
                   sh "kubectl set image projectcapstone projectcapstone=sijodevops/capstoneproj:latest"
-                  sh "kubectl apply -f Myinfradeployment.yml"
+                  sh "kubectl apply -f deployment.yml"
                   sh "kubectl get nodes"
                   sh "kubectl get deployment"
                   sh "kubectl get pod -o wide"
