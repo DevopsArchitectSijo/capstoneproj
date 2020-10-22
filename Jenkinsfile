@@ -20,15 +20,10 @@ pipeline {
               }
          }
           
-         stage('Lint Dockerfile'){
-                steps{
-                    sh '''
-						docker pull hadolint/hadolint:latest-debian
-						pwd
-						hadolint --ignore DL3006 ./Dockerfile
-					'''
-                }
-            }
+         stage("Linting") {
+      		echo 'Linting...'
+      		sh '/home/ubuntu/.local/bin/hadolint Dockerfile'
+    	}
                  
          stage('Build Docker Image') {
              when {
