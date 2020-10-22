@@ -45,7 +45,6 @@ pipeline {
               steps {
                   withAWS(region:'us-west-2',credentials:'jenkins') {
                   sh "aws eks --region us-west-2 update-kubeconfig --name capstoneproject123"
-                  /*sh "kubectl set image deployments/projectcapstone projectcapstone=sijodevops/capstoneproj:latest"*/
                   sh "kubectl apply -f deployment.yml"
                   sh "kubectl get nodes"
                   sh "kubectl get deployment"
@@ -57,12 +56,12 @@ pipeline {
               }
          }
           
-         /*stage("Cleaning up") {
+         stage("Cleaning up") {
               steps{
                     echo 'Cleaning up...'
                     sh "docker system prune"
               }
-        } */
+        } 
         
      }
 }
