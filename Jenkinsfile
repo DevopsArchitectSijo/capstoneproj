@@ -27,7 +27,15 @@ pipeline {
                   sh 'docker build --tag=projectscapstone .'
               }
          }
-       
+         stage('upload image to Dockerhub') {
+              steps { 
+                  script {
+                  withDockerRegistry([ credentialsId: "dockerhub", url: "" ]){
+                  sh "./upload_docker.sh"
+                  }
+                  }
+              }
+         }
         
      }
 }
