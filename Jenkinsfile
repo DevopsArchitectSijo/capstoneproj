@@ -24,7 +24,7 @@ pipeline {
                 branch 'master'
             }
               steps { 
-                  sh 'docker build --tag=projectscapstone .'
+                  sh 'docker build --tag=projectcapstone .'
               }
          }
          stage('upload image to Dockerhub') {
