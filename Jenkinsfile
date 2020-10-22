@@ -19,6 +19,16 @@ pipeline {
                   }
               }
          }
+          
+         stage('Lint Dockerfile'){
+                steps{
+                    sh '''
+						docker pull hadolint/hadolint:latest-debian
+						pwd
+						hadolint --ignore DL3006 Dockerfile
+					'''
+                }
+            }
                  
          stage('Build Docker Image') {
              when {
