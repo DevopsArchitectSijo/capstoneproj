@@ -4,12 +4,12 @@ This is the capstone project of Cloud DevOps Nandegree Program. It demonstrates 
 Instructions
 -------------
 
-create an ubuntu VM and install jenkins on it.
-configure awscli
-install packages docker, lint
-create kubernets cluster using aws EKS
-create github repository for the project
-configure jenkins with github,aws and docker
-write jienkisn pipeline for lint,buildand push docker image to docker hub
-add pipeline stage for deploying customaised docker conatainer to the kubernetes cluster
-prune the docker image.
+create an ubuntu VM and install jenkins on it.\n
+configure awscli\n
+install packages docker, lint\n
+create kubernets cluster using aws EKS\n
+create github repository for the project\n
+configure jenkins with github,aws and docker\n
+write jienkisn pipeline for lint,buildand push docker image to docker hub\n
+add pipeline stage for deploying customaised docker conatainer to the kubernetes cluster\n
+prune the docker image.\n
