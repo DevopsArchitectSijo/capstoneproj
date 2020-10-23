@@ -20,13 +20,22 @@ pipeline {
               }
          }
           
-          stage("Linting") {
-               steps {
-            		echo 'Linting...'
-      		     sh '/home/ubuntu/.local/bin/hadolint Dockerfile'
-               }
-    	    }
-                 
+          stage ("lint dockerfile") {
+               agent {
+                    docker {
+                         image 'hadolint/hadolint:latest-debian'
+                         }
+                     }
+                    steps {
+                         sh 'hadolint dockerfiles/* | tee -a hadolint_lint.txt'
+                    }
+                    post {
+                         always {
+                             archiveArtifacts 'hadolint_lint.txt'
+                         }
+                    }
+               }  
+          
          stage('Build Docker Image') {
              when {
                 branch 'master'
