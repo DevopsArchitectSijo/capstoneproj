@@ -23,7 +23,7 @@ pipeline {
           stage("Linting") {
                steps {
             		echo 'Linting...'
-      		     sh '/home/ubuntu/hadolint Dockerfile'
+      		     sh '/home/ubuntu/.local/bin/hadolint Dockerfile'
                }
     	    }
                  
