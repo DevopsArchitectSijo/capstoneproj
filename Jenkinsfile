@@ -27,7 +27,7 @@ pipeline {
                          }
                      }
                     steps {
-                         sh 'hadolint dockerfile| tee -a hadolint_lint.txt'
+                         sh 'hadolint --ignore DL3006 Dockerfile| tee -a hadolint_lint.txt'
                     }
                     post {
                          always {
