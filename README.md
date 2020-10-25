@@ -1,23 +1,27 @@
 Cloud-DevOps-Nanodegree-Capstone-Project
 This is the capstone project of Cloud DevOps Nandegree Program. It demonstrates the ability to use AWS, Jenkins, Docker, Kubernetes, build a CI/CD Pipeline, deploy EKS Cluster as IaC.
 
-Instructions
+Instructions for Setup
 -------------
 
-create an ubuntu VM and install jenkins on it.
+Create an ubuntu VM and install jenkins on it.
 
-configure awscli
+Configure awscli
 
-install packages docker, lint
+Install Docker, Lint, EKS packages
 
-create kubernets cluster using aws EKS
+Create Kubernetes cluster using aws EKS on your Ubuntu VM
 
-create github repository for the project
+Create github repository for the project
 
-configure jenkins with github,aws and docker
+Configure jenkins with credentials for github, aws and docker
 
-write jienkisn pipeline for lint,buildand push docker image to docker hub
+Write a docker file to build the nginix image with customised intex,html
 
-add pipeline stage for deploying customaised docker conatainer to the kubernetes cluster
+Write jenkins pipeline for lint,build and push docker image to docker hub
 
-prune the docker image.
+Add jenkins pipeline stage for deploying customaised docker conatainer to the kubernetes cluster created.
+
+List the pods, services and  created in the kuberntes cluster 
+
+Prune the docker image.
